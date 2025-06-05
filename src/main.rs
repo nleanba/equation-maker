@@ -9,14 +9,20 @@ use clap::Parser;
 use miette::{Context, IntoDiagnostic};
 use regex::Regex;
 
+/// Searches provided source file for `[[[ formula ]]]` and `[[[! block formula ]]]`,
+/// uses typst to render the formulas into svg placed in `output`,
+/// and replaces them in the formula with `<img>`s.
 #[derive(Parser)]
 #[command(version, about, long_about = None)]
 struct Cli {
+    /// Source HTML to create formulas for.
+    /// The names of the generated SVGs are based on this file’s name.
     #[arg(value_name = "FILE")]
     source: PathBuf,
-    #[arg(short, long, value_name = "SVG DIR")]
+    /// Directory to place SVGs in.
+    #[arg(short, long, value_name = "SVGDIR")]
     output: PathBuf,
-    /// path to use for img src for SVG DIR
+    /// path to use for img src for SVGDIR - should en with a `/`.
     #[arg(short, long, value_name = "PATH")]
     path: String,
 }
