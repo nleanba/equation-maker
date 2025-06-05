@@ -48,12 +48,9 @@ fn main() -> miette::Result<()> {
 
 const STYLE: &str = r#">
 <style>
-    :root {
-        color-scheme: light dark;
-    }
-    .typst-text use {
-        fill: light-dark(oklch(0.35 0.035 215), oklch(0.98 0.015 215)) !important;
-    }
+:root { color-scheme: light dark; }
+.typst-text use { fill: light-dark(oklch(0.35 0.035 215), oklch(0.98 0.015 215)) !important; }
+.typst-shape { stroke: light-dark(oklch(0.35 0.035 215), oklch(0.98 0.015 215)) !important; }
 </style>"#;
 
 fn create_equations(
